@@ -1,0 +1,255 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap');
+  :root{--bg:#ffffff;--bg2:#f7f5ff;--bg3:#ede9ff;--purple:#6c3ef4;--purple-dim:#9b7ef8;--purple-light:#ede9ff;--text:#1a1625;--text-muted:#6b6580;--border:#e0d9f7;--card:#faf9ff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  #site{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;font-size:15px;line-height:1.6}
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .nav-logo{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--purple);letter-spacing:.08em}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer}
+  .nav-links a:hover{color:var(--purple)}
+  section{padding:72px 40px;max-width:900px;margin:0 auto}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:10px}
+  .section-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--text);margin-bottom:28px;line-height:1.2}
+
+  /* HERO */
+  #hero{min-height:calc(100vh - 56px);display:flex;align-items:center;padding:60px 40px;max-width:900px;margin:0 auto;gap:48px}
+  .hero-left{flex:1;min-width:0}
+  .hero-right{flex-shrink:0;display:flex;align-items:flex-end;justify-content:center}
+  .hero-character{width:220px;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(108,62,244,0.12))}
+  .hero-greeting{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .hero-greeting::before{content:'';display:inline-block;width:32px;height:1px;background:var(--purple)}
+  .hero-name{font-family:'Playfair Display',serif;font-size:clamp(38px,5.5vw,68px);font-weight:700;line-height:1.05;margin-bottom:14px;color:var(--text)}
+  .hero-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.8vw,32px);color:var(--text-muted);margin-bottom:24px;line-height:1.2}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);border:1px solid var(--border);padding:5px 12px;display:flex;align-items:center;gap:6px;background:var(--card)}
+  .tag i{color:var(--purple);font-size:13px}
+  .hero-btns{display:flex;gap:12px}
+  .btn-primary{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:var(--purple);color:#fff;border:none;padding:12px 24px;cursor:pointer;font-weight:600;transition:opacity .2s}
+  .btn-primary:hover{opacity:.85}
+  .btn-secondary{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 24px;cursor:pointer;transition:border-color .2s,color .2s}
+  .btn-secondary:hover{border-color:var(--purple);color:var(--purple)}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  .about-text p{color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .stat-box{background:var(--bg2);padding:22px;text-align:center}
+  .stat-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--purple);display:block}
+  .stat-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-top:4px;display:block}
+  .timeline{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .tl-item{background:var(--card);padding:24px 28px;display:grid;grid-template-columns:140px 1fr;gap:20px}
+  .tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--purple-dim);letter-spacing:.06em;padding-top:3px}
+  .tl-role{font-size:15px;font-weight:500;color:var(--text);margin-bottom:2px}
+  .tl-company{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:.06em;margin-bottom:10px}
+  .tl-bullets{list-style:none;padding:0}
+  .tl-bullets li{color:var(--text-muted);font-size:13px;line-height:1.65;padding-left:14px;position:relative;margin-bottom:5px}
+  .tl-bullets li::before{content:'—';position:absolute;left:0;color:var(--purple-dim)}
+  .skills-section{display:flex;flex-direction:column;gap:20px}
+  .skill-group-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;display:block}
+  .skill-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);border:1px solid var(--border);background:var(--card);padding:4px 10px;letter-spacing:.04em}
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .project-card{background:var(--card);padding:26px;transition:background .2s}
+  .project-card:hover{background:var(--bg3)}
+  .project-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple-dim);margin-bottom:10px;display:block}
+  .project-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:8px;color:var(--text)}
+  .project-cat{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--purple);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
+  .project-desc{color:var(--text-muted);font-size:13px;line-height:1.65;margin-bottom:14px}
+  .tech-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--purple);background:rgba(108,62,244,.07);border:1px solid rgba(108,62,244,.2);padding:3px 8px;letter-spacing:.04em}
+  .certs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .cert-card{background:var(--card);padding:20px 24px;display:flex;gap:14px;align-items:flex-start;transition:background .2s}
+  .cert-card:hover{background:var(--bg3)}
+  .cert-icon{color:var(--purple);font-size:20px;margin-top:2px;flex-shrink:0}
+  .cert-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+  .cert-detail{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:.04em}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .contact-info{background:var(--bg2);padding:32px 26px}
+  .contact-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;color:var(--text)}
+  .contact-role{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;display:block}
+  .contact-bio{color:var(--text-muted);font-size:13px;line-height:1.7;margin-bottom:24px}
+  .social-row{display:flex;gap:8px}
+  .social-btn{width:36px;height:36px;border:1px solid var(--border);background:transparent;color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-size:16px}
+  .social-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-light)}
+  .contact-form{background:var(--card);padding:32px 26px;display:flex;flex-direction:column;gap:14px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .form-group{display:flex;flex-direction:column;gap:5px}
+  .form-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple)}
+  .form-input,.form-textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 11px;outline:none;transition:border-color .2s;resize:vertical}
+  .form-input:focus,.form-textarea:focus{border-color:var(--purple)}
+  .form-textarea{min-height:90px}
+  footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto}
+  .footer-mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}
+  .purple{color:var(--purple)}
+</style>
+
+<div id="site">
+  <nav>
+    <span class="nav-logo">raiya.dev</span>
+    <ul class="nav-links">
+      <li><a onclick="sc('about')">About</a></li>
+      <li><a onclick="sc('experience')">Experience</a></li>
+      <li><a onclick="sc('projects')">Projects</a></li>
+      <li><a onclick="sc('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero" style="padding-top:40px;padding-bottom:40px;">
+    <div class="hero-left">
+      <div class="hero-greeting">Hello, world</div>
+      <h1 class="hero-name">Raiya Jessani</h1>
+      <div class="hero-title">Security & Cloud Engineer</div>
+      <div class="hero-tags">
+        <span class="tag"><i class="ti ti-map-pin" aria-hidden="true"></i> Waterloo, ON</span>
+        <span class="tag"><i class="ti ti-school" aria-hidden="true"></i> UWaterloo CS — Dec 2027</span>
+        <span class="tag"><i class="ti ti-shield-lock" aria-hidden="true"></i> Security + Cloud</span>
+        <span class="tag"><i class="ti ti-certificate" aria-hidden="true"></i> 5× AWS Certified</span>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="sc('contact')">Hire me →</button>
+        <button class="btn-secondary">Download CV ↓</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-character" src="/mnt/user-data/uploads/Gemini_Generated_Image_axhsqvaxhsqvaxhs.png" alt="Raiya character illustration" />
+    </div>
+  </section>
+
+  <section id="about" style="border-top:1px solid var(--border)">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title">Who I am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Computer Science student at the University of Waterloo, specialising in Security and Cloud Engineering. I've done co-ops at TD Bank and AWS, building everything from vulnerability pipelines to incident response tooling.</p>
+        <p>I care about systems that are not just functional, but resilient — code that holds up when things go wrong at scale. Outside of work I'm deep in low-level security research and cloud architecture.</p>
+        <p style="color:var(--purple);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em">Current focus: <span style="color:var(--text)">Security engineering + cloud security →</span></p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box"><span class="stat-num">5</span><span class="stat-label">Co-op terms</span></div>
+        <div class="stat-box"><span class="stat-num">5×</span><span class="stat-label">AWS certified</span></div>
+        <div class="stat-box"><span class="stat-num">50+</span><span class="stat-label">Daily findings triaged</span></div>
+        <div class="stat-box"><span class="stat-num">8M+</span><span class="stat-label">Users impacted</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="border-top:1px solid var(--border)">
+    <div class="section-label">02 — Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jan 2026 – Apr 2026</div>
+        <div><div class="tl-role">Security Engineer</div><div class="tl-company">TD Bank · Toronto, ON</div>
+          <ul class="tl-bullets">
+            <li>Migrated app security vulnerability workflows from batch Python scripts to live ServiceNow scanning across 50+ services</li>
+            <li>Triaged 50 daily security findings; diagnosed a Jira overflow bug silently breaking ticket creation</li>
+            <li>Led security risk investigations across KRI and DCJ/EPRF frameworks for leadership metrics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2025 – Aug 2025</div>
+        <div><div class="tl-role">Cloud Engineer</div><div class="tl-company">Amazon Web Services · Vancouver, BC</div>
+          <ul class="tl-bullets">
+            <li>Built an RDS/EBS Performance Analyzer using a fine-tuned AI model and adversarial two-model debate architecture, saving 15–20 min per case</li>
+            <li>Completed a CIRT rotation on live customer cases — IAM credential compromise and account takeovers at cloud scale</li>
+            <li>Explored 30+ AWS services through labs and production architecture projects</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sept – Dec 2024</div>
+        <div><div class="tl-role">Software Developer</div><div class="tl-company">Hitachi Rail · Toronto, ON</div>
+          <ul class="tl-bullets">
+            <li>Resolved a data corruption bug in a C logging system for rail zone controllers via 100ms event batching, cutting debug time 40%</li>
+            <li>Built log collection and metadata pipelines in Python/Shell underpinning security monitoring, saving 15+ hrs/week</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jan – May 2023</div>
+        <div><div class="tl-role">Data Engineer</div><div class="tl-company">TD Bank · Toronto, ON</div>
+          <ul class="tl-bullets">
+            <li>Automated ServiceNow workbook updates with VBA, cutting processing time 80% across 10K+ records</li>
+            <li>Built a Confluence knowledge base with 50+ resources, boosting onboarding speed 40%</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May – Aug 2022</div>
+        <div><div class="tl-role">Mobile Software Engineer</div><div class="tl-company">TD Bank · Toronto, ON</div>
+          <ul class="tl-bullets">
+            <li>Enhanced the Android banking app with Java/Kotlin, shipping features to 8M+ active users</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="border-top:1px solid var(--border)">
+    <div class="section-label">03 — Skills</div>
+    <h2 class="section-title">What I work with</h2>
+    <div class="skills-section">
+      <div><span class="skill-group-label">Security</span><div class="skill-chips"><span class="chip">Penetration Testing</span><span class="chip">Auth & Authz</span><span class="chip">Firewalls</span><span class="chip">SIEM</span><span class="chip">Incident Response</span></div></div>
+      <div><span class="skill-group-label">Languages</span><div class="skill-chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C / C++</span><span class="chip">Kotlin</span><span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">Lua</span></div></div>
+      <div><span class="skill-group-label">AWS</span><div class="skill-chips"><span class="chip">EC2</span><span class="chip">RDS</span><span class="chip">IAM</span><span class="chip">Lambda</span><span class="chip">S3</span><span class="chip">VPC</span><span class="chip">CloudFormation</span><span class="chip">CloudWatch</span><span class="chip">EBS</span><span class="chip">SNS/SQS</span></div></div>
+      <div><span class="skill-group-label">Cloud & Infra</span><div class="skill-chips"><span class="chip">Docker</span><span class="chip">IaC</span><span class="chip">Load Balancers</span><span class="chip">Auto Scaling</span><span class="chip">Network Routing</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects" style="border-top:1px solid var(--border)">
+    <div class="section-label">04 — Projects</div>
+    <h2 class="section-title">What I've built</h2>
+    <div class="projects-grid">
+      <div class="project-card"><span class="project-num">001</span><span class="project-cat">Security</span><div class="project-name">Self-Replicating Worm</div><p class="project-desc">Built a self-replicating worm in C++ in a sandboxed lab environment, studying propagation mechanics, process hiding, and OS-level file system interaction.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="tech-tag">C++</span><span class="tech-tag">Systems</span><span class="tech-tag">Malware Analysis</span></div></div>
+      <div class="project-card"><span class="project-num">002</span><span class="project-cat">Cryptography</span><div class="project-name">File Encryption System</div><p class="project-desc">CLI file encryption tool using a hybrid AES + RSA model with fresh key generation per session and bit-for-bit decryption validation across multiple file types.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="tech-tag">Python</span><span class="tech-tag">AES</span><span class="tech-tag">RSA</span><span class="tech-tag">Cryptography</span></div></div>
+      <div class="project-card"><span class="project-num">003</span><span class="project-cat">Cloud / AI</span><div class="project-name">RDS/EBS Performance Analyzer</div><p class="project-desc">Fine-tuned AI model using an adversarial two-model debate architecture trained on historical AWS support cases, cutting resolution time by 15–20 minutes per case.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="tech-tag">AWS</span><span class="tech-tag">RDS</span><span class="tech-tag">Fine-tuning</span><span class="tech-tag">Python</span></div></div>
+      <div class="project-card"><span class="project-num">004</span><span class="project-cat">Security / DevOps</span><div class="project-name">Vulnerability Pipeline Migration</div><p class="project-desc">Migrated app security scanning from batch scripts to live ServiceNow scanning across 50+ services, eliminating silent failures and catching vulnerabilities at code push.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="tech-tag">ServiceNow</span><span class="tech-tag">Python</span><span class="tech-tag">CI/CD</span></div></div>
+    </div>
+  </section>
+
+  <section id="certs" style="border-top:1px solid var(--border)">
+    <div class="section-label">05 — Certifications</div>
+    <h2 class="section-title">Credentials</h2>
+    <div class="certs-grid">
+      <div class="cert-card"><i class="ti ti-shield cert-icon" aria-hidden="true"></i><div><div class="cert-name">AWS Certified Security – Specialty</div><div class="cert-detail">Cloud security best practices & IAM · 40 hrs</div></div></div>
+      <div class="cert-card"><i class="ti ti-brain cert-icon" aria-hidden="true"></i><div><div class="cert-name">AWS Certified Generative AI – Specialty</div><div class="cert-detail">AI services with cloud infrastructure · 80 hrs</div></div></div>
+      <div class="cert-card"><i class="ti ti-cloud cert-icon" aria-hidden="true"></i><div><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-detail">Foundational AWS knowledge · 30 hrs</div></div></div>
+      <div class="cert-card"><i class="ti ti-layout cert-icon" aria-hidden="true"></i><div><div class="cert-name">AWS Solutions Architect – Associate</div><div class="cert-detail">Scalable, cost-efficient architectures · 100 hrs</div></div></div>
+      <div class="cert-card"><i class="ti ti-lock cert-icon" aria-hidden="true"></i><div><div class="cert-name">CompTIA Security+</div><div class="cert-detail">Cybersecurity fundamentals & risk management · 20 hrs</div></div></div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-top:1px solid var(--border)">
+    <div class="section-label">06 — Contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-name">Raiya Jessani</div>
+        <span class="contact-role">Security & Cloud Engineer</span>
+        <p class="contact-bio">I'm open to full-time roles and internships in security engineering and cloud. Drop me a line — I read everything.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple-dim);margin-bottom:20px">rijessan@uwaterloo.ca</p>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/raiya-jessani" target="_blank"><button class="social-btn" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></button></a>
+          <a href="https://github.com/RaiyaJessani" target="_blank"><button class="social-btn" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></button></a>
+          <button class="social-btn" aria-label="Email"><i class="ti ti-mail" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Jane Smith" /></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="jane@example.com" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" placeholder="Let's work together" /></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about the role or project..."></textarea></div>
+        <button class="btn-primary" style="align-self:flex-start">Send message →</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-mono">© 2026 <span class="purple">raiya.dev</span></span>
+    <span class="footer-mono">UWaterloo CS · Dec 2027</span>
+  </footer>
+</div>
+<script>function sc(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}</script>
