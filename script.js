@@ -36,6 +36,7 @@ function setHeroImage() {
 window.addEventListener("DOMContentLoaded", async () => {
   await loadSection("hero", "sections/hero.html");
   await loadSection("about", "sections/about.html");
+  await loadSection("blog", "sections/blog.html");
   await loadSection("experience", "sections/experience.html");
   await loadSection("skills", "sections/skills.html");
   await loadSection("projects", "sections/projects.html");
