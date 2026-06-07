@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <title>Raiya — Blog</title>
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body id="site">
 
 <nav>
-  <span class="nav-logo">raiya.jessani/blog</span>
-
+  <span class="nav-logo">raiya.dev/blog</span>
   <ul class="nav-links">
     <li><a href="../index.html">Home</a></li>
   </ul>
@@ -20,80 +22,59 @@
 
   <!-- HEADER -->
   <div class="section-label">Blog</div>
-  <h2 class="section-title">Weekly notes on security, systems, and engineering</h2>
+  <h2 class="section-title">Writing on security, systems, and cloud engineering</h2>
 
-  <p style="color:var(--text-muted); margin-bottom:40px; line-height:1.7;">
-    A structured log of what I’m learning each week — mostly focused on security engineering,
-    cloud systems, and real-world production failures.
-  </p>
-
-  <!-- ================= WELCOME POST ================= -->
-  <div class="section-label">Welcome Post</div>
-
-  <a href="posts/welcome.html" style="text-decoration:none;color:inherit">
-    <div class="project-card" style="margin-bottom:40px;">
-      <span class="project-num">000</span>
-      <span class="project-cat">Start Here</span>
-      <div class="project-name">Why I started writing this blog</div>
-      <p class="project-desc">
-        A short introduction to what this blog is, what I’m trying to learn,
-        and how I think about systems, security, and engineering growth.
-      </p>
-      <span class="tech-tag">Reflection</span>
-    </div>
-  </a>
-
-  <!-- ================= WEEK 1 ================= -->
-  <div class="section-label">Week 1 — Foundations</div>
-
-  <div class="projects-grid">
-
-    <a href="posts/week1-iam-basics.html" style="text-decoration:none;color:inherit">
-      <div class="project-card">
-        <span class="project-num">001</span>
-        <span class="project-cat">Security</span>
-        <div class="project-name">IAM basics and why they matter</div>
-        <p class="project-desc">
-          Understanding identity boundaries and least privilege in cloud systems.
-        </p>
-        <span class="tech-tag">AWS IAM</span>
-      </div>
-    </a>
-
-    <a href="posts/week1-observability.html" style="text-decoration:none;color:inherit">
-      <div class="project-card">
-        <span class="project-num">002</span>
-        <span class="project-cat">Systems</span>
-        <div class="project-name">Why logs are not enough</div>
-        <p class="project-desc">
-          Observability vs logging vs monitoring — and where systems usually fail.
-        </p>
-        <span class="tech-tag">Observability</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- ================= WEEK 2 ================= -->
-  <div class="section-label">Week 2 — Attack Surfaces</div>
-
-  <div class="projects-grid">
-
-    <a href="posts/week2-auth-models.html" style="text-decoration:none;color:inherit">
-      <div class="project-card">
-        <span class="project-num">003</span>
-        <span class="project-cat">Security</span>
-        <div class="project-name">Auth systems: sessions vs tokens</div>
-        <p class="project-desc">
-          Tradeoffs between session-based auth and JWT-based systems.
-        </p>
-        <span class="tech-tag">Auth</span>
-      </div>
-    </a>
-
-  </div>
-
+  <div id="blog-container"></div>
 </section>
+
+<script>
+async function loadBlog() {
+  const res = await fetch("./generated/index.json");
+  const data = await res.json();
+
+  const container = document.getElementById("blog-container");
+
+  const weeks = [...data.weeks].reverse();
+
+  weeks.forEach((week, wi) => {
+
+    container.innerHTML += `
+      <div class="section-label">${week.week}</div>
+      <div class="projects-grid" id="week-${wi}"></div>
+    `;
+
+    const weekContainer = document.getElementById(`week-${wi}`);
+
+    week.posts.forEach(post => {
+
+      weekContainer.innerHTML += `
+        <div class="project-card"
+          onclick="openPost('${week.id}', '${post.slug}')"
+          style="cursor:pointer">
+
+          <span class="project-cat">${post.category}</span>
+          <div class="project-name">${post.title}</div>
+
+          <p class="project-desc">${post.summary}</p>
+
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            ${post.tags.map(t => `<span class="tech-tag">${t}</span>`).join("")}
+          </div>
+
+        </div>
+      `;
+    });
+  });
+
+  window.__blogData = data;
+}
+
+function openPost(weekId, postSlug) {
+  window.location.href = `post.html?week=${weekId}&post=${postSlug}`;
+}
+
+window.addEventListener("DOMContentLoaded", loadBlog);
+</script>
 
 </body>
 </html>

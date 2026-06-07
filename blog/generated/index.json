@@ -1,0 +1,59 @@
+{
+  "latestWeek": "week2",
+  "weeks": [
+    {
+      "id": "week0",
+      "week": "week0",
+      "posts": [
+        {
+          "title": "IAM basics and why they matter",
+          "category": "Security",
+          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
+          "tags": [
+            "AWS IAM",
+            "Security",
+            "Cloud"
+          ],
+          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
+          "slug": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "week1",
+      "week": "week1",
+      "posts": [
+        {
+          "title": "IAM basics and why they matter",
+          "category": "Security",
+          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
+          "tags": [
+            "AWS IAM",
+            "Security",
+            "Cloud"
+          ],
+          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
+          "slug": "iam-basics"
+        }
+      ]
+    },
+    {
+      "id": "week2",
+      "week": "week2",
+      "posts": [
+        {
+          "title": "IAM basics and why they matter",
+          "category": "Security",
+          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
+          "tags": [
+            "AWS IAM",
+            "Security",
+            "Cloud"
+          ],
+          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
+          "slug": "week2post"
+        }
+      ]
+    }
+  ]
+}
