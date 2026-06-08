@@ -1,5 +1,5 @@
 const characters = [
-  { name: "character1", frames: 176 },
+  { name: "character1", frames: 50 },
   { name: "character2", frames: 1 },
   { name: "character3", frames: 1 },
   { name: "character4", frames: 1 }
