@@ -9,10 +9,10 @@ async function loadSection(id, file) {
 }
 
 const images = [
-  "assets/Character_1.png",
-  "assets/Character_2.png",
-  "assets/Character_3.png",
-  "assets/Character_4.png"
+  "assets/Character_1.webp",
+  "assets/Character_2.webp",
+  "assets/Character_3.webp",
+  "assets/Character_4.webp"
 ];
 
 function setHeroImage() {
