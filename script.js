@@ -2,34 +2,16 @@ function sc(id){
   const el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth'})
 }
-async function loadSection(id, file) {
+
+async function loadSection(id, file, replacements = {}) {
   const res = await fetch(file);
-  const html = await res.text();
+  let html = await res.text();
+
+  Object.entries(replacements).forEach(([key, value]) => {
+    html = html.replaceAll(`{{${key}}}`, value);
+  });
+
   document.getElementById(id).innerHTML = html;
-}
-
-const images = [
-  "assets/Character_1.webp",
-  "assets/Character_2.webp",
-  "assets/Character_3.webp",
-  "assets/Character_4.webp"
-];
-
-function setHeroImage() {
-  const imgEl = document.getElementById("heroImage");
-
-  const hasVisited = localStorage.getItem("hasVisited");
-
-  if (!hasVisited) {
-    // FIRST EVER VISIT → always pick first image
-    imgEl.src = images[0];
-
-    localStorage.setItem("hasVisited", "true");
-  } else {
-    // AFTER THAT → random every reload
-    const randomIndex = Math.floor(Math.random() * images.length);
-    imgEl.src = images[randomIndex];
-  }
 }
 
 async function loadLatestBlog() {
@@ -67,6 +49,5 @@ window.addEventListener("DOMContentLoaded", async () => {
   await loadSection("projects", "sections/projects.html");
   await loadSection("certs", "sections/certs.html");
   await loadSection("contact", "sections/contact.html");
-  setHeroImage();
   loadLatestBlog();
 });
