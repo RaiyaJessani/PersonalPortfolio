@@ -34,6 +34,26 @@ async function loadPost() {
 
   const container = document.getElementById("post-container");
 
+  const sourceSection = post.sourceUrl
+    ? `
+      <hr class="post-divider">
+
+      <div class="post-source">
+        <div class="section-label">Sources:</div>
+
+        <a
+          href="${post.sourceUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="source-link"
+        >
+          ${post.sourceUrl}
+        </a>
+      </div>
+    `
+    : "";
+
+
   container.innerHTML = `
     <h2 class="section-title">${post.title}</h2>
 
@@ -41,10 +61,24 @@ async function loadPost() {
       ${post.summary}
     </p>
 
+    <div class="post-meta">
+      <span>${new Date(post.date).toLocaleDateString("en-CA", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })}</span>
+      <span>·</span>
+      <span>${post.author}</span>
+      <span>·</span>
+      <span>${post.source}</span>
+      <span>
+    </div>
+
     <div class="post-content">
       ${marked.parse(post.content)}
     </div>
-  `;
+    ${sourceSection}
+`;
 }
 
 window.addEventListener("DOMContentLoaded", loadPost);

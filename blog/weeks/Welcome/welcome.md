@@ -1,8 +1,12 @@
 ---
 title: Welcome!
+date: 2026-07-09
+author: "Raiya Jessani"
+source: N/A
+sourceUrl: "https://example.com/article"
 summary: Here's a little bit about who I am and what this blog will be about :)
 tags: AWS IAM, Security, Cloud
-date: 2026-07-09
+
 ---
 
 Hi everyone! I've been wanting to get this blog out for a really long time, and everytime I think of starting I end up putting it on hold.

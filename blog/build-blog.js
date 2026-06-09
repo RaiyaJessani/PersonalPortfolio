@@ -50,6 +50,10 @@ function build() {
 
       return {
         title: post.title || "Untitled",
+        date: post.date || "N/A",
+        author: post.author || "Raiya Jessani",
+        source: post.source || "",
+        sourceUrl: post.sourceUrl || "",
         summary: post.summary || "",
         tags: normalizeTags(post.tags),
         content: post.content || "",

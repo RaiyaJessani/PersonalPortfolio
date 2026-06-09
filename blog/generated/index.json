@@ -6,43 +6,20 @@
       "week": "week1",
       "posts": [
         {
-          "title": "WEEK 1",
-          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
+          "title": "Meta AI and the Human Side of Security",
+          "date": "2026-07-09T00:00:00.000Z",
+          "author": "Raiya Jessani",
+          "source": "SecurityWeek",
+          "sourceUrl": "https://www.securityweek.com/meta-says-20000-instagram-accounts-hacked-via-ai-tool-abuse/",
+          "summary": "Hacker were able to manipulate a Meta AI system into changine account email addresses, ultimately giving them access to 20,000 users accounts.",
           "tags": [
-            "AWS IAM",
+            "AI",
             "Security",
-            "Cloud"
+            "Meta",
+            "AttackSurface"
           ],
-          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
-          "slug": "iam-basics"
-        }
-      ]
-    },
-    {
-      "id": "week2",
-      "week": "week2",
-      "posts": [
-        {
-          "title": "WEEK 1",
-          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
-          "tags": [
-            "AWS IAM",
-            "Security",
-            "Cloud"
-          ],
-          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
-          "slug": "iam-basics"
-        },
-        {
-          "title": "WEEK 2",
-          "summary": "Understanding identity boundaries in AWS and why least privilege matters.",
-          "tags": [
-            "AWS IAM",
-            "Security",
-            "Cloud"
-          ],
-          "content": "\nIAM is one of the most critical systems in cloud security.\n\nMost real-world breaches come from:\n- over-permissioned roles\n- leaked credentials\n- weak trust policies\n\nLeast privilege sounds simple, but in practice:\n- teams over-grant permissions for speed\n- permissions accumulate over time\n- audits happen too late",
-          "slug": "week2post"
+          "content": "\nThis week I came across a story about hackers being able to manipulate Meta’s AI into providing information that could be used for account takeover attempts.\n\nMeta recently rolled out an AI-assisted support chatbot meant to streamline account recovery for Instagram. Unfortunately, a major flaw meant the AI didn’t properly verify if the requested password reset link matched the actual account owner’s email.  Hackers quickly figured out they could trick the AI into mapping a new email address to target accounts. Meta quickly to shut down the tool and deployed a fix, but over 20,000 users were impacted, including high-profile targets like the Obama White House and the Chief Master Sergeant of the Space Force.  \n\nThe case raised an interesting question about how we think about AI systems as part of the security landscape. Traditionally, security has focused on code, permissions, and infrastructure. But now with AI systems increasing, the attack surface is shifting toward language, prompting, and persuasion.\n\nThe security game has evolved from strictly protecting backend databases and checking standard code logic to understanding AI psychology and workflow safety. If we give AI conversational agents the power to execute high-privilege actions (like account recovery), prompt injection and social engineering become critical infrastructure vulnerabilities.  Testing an AI's boundaries before deploying to millions of users is no longer optional. It's the new baseline for trust.  \n",
+          "slug": "meta-hack"
         }
       ]
     },
@@ -52,13 +29,17 @@
       "posts": [
         {
           "title": "Welcome!",
+          "date": "2026-07-09T00:00:00.000Z",
+          "author": "Raiya Jessani",
+          "source": "N/A",
+          "sourceUrl": "https://example.com/article",
           "summary": "Here's a little bit about who I am and what this blog will be about :)",
           "tags": [
             "AWS IAM",
             "Security",
             "Cloud"
           ],
-          "content": "\nHi everyone! I've been wanting to get this blog out for a really long time, and everytime I think of starting I end up putting it on hold.\n\nI've been super passionate about cybersecurity for over a year now and for just as long I've wanted to have a place to share my thoughts. As a Gen-Z student, I'm constantly flooded with information. Whether it's through the news, podcasts, social media, or conversations in the classroom at a tech heavy school, people are always talking about what's happening in the world and I've always wanted an outlet to do the same.\n\nTruthfully, I'm not entirely sure what this blog will actually become. Maybe it will be about cybersecurity news. Maybe it will be about a new project I'm working on. Or maybe it will be about a problem I spent way too long trying to solve. \n\nWelcome to Week 1 of my blog. <br>\n- No defined roadmap. <br>\n- No defined direction.<br>\n- No defined anything.<br>\n\nActually, let's remove the world defined from our library altogether.\n\nLife isn't defined. Careers aren't defined. Success isn't defined. Most of the meaningful things in life happen somewhere between having a plan and figuring it out as you go. This blog is no different.\n\nSo here's to getting started, wherever this ends up going.\n\nI hope you enjoy hearing my inside voice.\n",
+          "content": "\nHi everyone! I've been wanting to get this blog out for a really long time, and everytime I think of starting I end up putting it on hold.\n\nI've been super passionate about cybersecurity for over a year now and for just as long I've wanted to have a place to share my thoughts. As a Gen-Z student, I'm constantly flooded with information. Whether it's through the news, podcasts, social media, or conversations in the classroom at a tech heavy school, people are always talking about what's happening in the world and I've always wanted an outlet to do the same.\n\nTruthfully, I'm not entirely sure what this blog will actually become. Maybe it will be about cybersecurity news. Maybe it will be about a new project I'm working on. Or maybe it will be about a problem I spent way too long trying to solve. \n\nWelcome to Week 1 of my blog. <br>\n- No defined roadmap. <br>\n- No defined direction.<br>\n- No defined anything.\n\nActually, let's remove the world defined from our library altogether.\n\nLife isn't defined. Careers aren't defined. Success isn't defined. Most of the meaningful things in life happen somewhere between having a plan and figuring it out as you go. This blog is no different.\n\nSo here's to getting started, wherever this ends up going.\n\nI hope you enjoy hearing my inside voice.\n",
           "slug": "welcome"
         }
       ]
