@@ -35,14 +35,13 @@ async function loadPost() {
   const container = document.getElementById("post-container");
 
   container.innerHTML = `
-    <div class="section-label">${post.category}</div>
     <h2 class="section-title">${post.title}</h2>
 
-    <p style="color:var(--text-muted); margin-bottom:20px">
+    <p class="post-summary">
       ${post.summary}
     </p>
 
-    <div style="line-height:1.8; color:var(--text)">
+    <div class="post-content">
       ${marked.parse(post.content)}
     </div>
   `;

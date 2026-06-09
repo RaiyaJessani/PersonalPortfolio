@@ -1,6 +1,5 @@
 ---
-title: IAM basics and why they matter
-category: Security
+title: WEEK 2
 summary: Understanding identity boundaries in AWS and why least privilege matters.
 tags: AWS IAM, Security, Cloud
 date: 2026-06-01

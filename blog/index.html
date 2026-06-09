@@ -40,7 +40,7 @@ async function loadBlog() {
 
     container.innerHTML += `
       <div class="section-label">${week.week}</div>
-      <div class="projects-grid" id="week-${wi}"></div>
+      <div class="blog-grid" id="week-${wi}"></div>
     `;
 
     const weekContainer = document.getElementById(`week-${wi}`);
@@ -48,11 +48,10 @@ async function loadBlog() {
     week.posts.forEach(post => {
 
       weekContainer.innerHTML += `
-        <div class="project-card"
+          <div class="blog-card"
           onclick="openPost('${week.id}', '${post.slug}')"
           style="cursor:pointer">
 
-          <span class="project-cat">${post.category}</span>
           <div class="project-name">${post.title}</div>
 
           <p class="project-desc">${post.summary}</p>

@@ -17,7 +17,8 @@ function readMarkdown(filePath) {
 
 function getFolders(dir) {
   return fs.readdirSync(dir)
-    .filter(f => fs.statSync(path.join(dir, f)).isDirectory());
+    .filter(f => fs.statSync(path.join(dir, f)).isDirectory())
+    .sort((a, b) => a.localeCompare(b));
 }
 
 function getMarkdownFiles(dir) {
@@ -49,7 +50,6 @@ function build() {
 
       return {
         title: post.title || "Untitled",
-        category: post.category || "Uncategorized",
         summary: post.summary || "",
         tags: normalizeTags(post.tags),
         content: post.content || "",
