@@ -1,6 +1,6 @@
 ---
 title: "When AI Security Becomes a Trust Problem: Alibaba, Anthropic, and Claude Code"
-summary: "Exploring Alibaba's ban on Anthropic's Claude Code after the discovery of hidden tracking mechanisms, the security implications of AI tooling, and the growing tension between transparency, privacy, and geopolitical competition."
+summary: "Exploring Alibaba's ban on Anthropic's Claude Code after the discovery of hidden tracking mechanisms."
 tags: ["AI Security", "Cybersecurity", "Artificial Intelligence", "Data Privacy", "Supply Chain Security"]
 date: "2026-07-03"
 source: "The Next Web"
